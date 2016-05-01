@@ -16,7 +16,7 @@ function ttfInfo(data) {
     return info;
   }
   catch(e) {
-    console.error(String(e));
+    // console.error(String(e));
     throw ("Error reading ttf: " + String(e));
   }
 }

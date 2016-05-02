@@ -22,16 +22,35 @@ function ttfInfo(data) {
 }
 
 module.exports = function(pathOrData, cb) {
-	var getData = (pathOrData instanceof Buffer) ?
-		function(data, cb) { cb(null, data); } : fs.readFile;
 
-	getData(pathOrData, function(err, data) {
-		if (err) return cb(pathOrData + ' not found.');
-		try {
-			var info = ttfInfo(data);
-			cb(null, info);
-		} catch(err) {
-			cb(err);
-		}
-	});
+};
+
+module.exports = {
+    get: function(pathOrData, cb) {
+        var getData = (pathOrData instanceof Buffer) ?
+    		function(data, cb) { cb(null, data); } : fs.readFile;
+
+    	getData(pathOrData, function(err, data) {
+    		if (err) return cb(pathOrData + ' not found.');
+    		try {
+    			var info = ttfInfo(data);
+    			cb(null, info);
+    		} catch(err) {
+    			cb(err);
+    		}
+    	});
+    },
+    getSync: function(pathOrData) {
+        var data;
+        if (pathOrData instanceof Buffer) {
+            data = pathOrdata;
+        } else {
+            try {
+                data = fs.readFileSync(pathOrData);
+            } catch(e) {
+                throw new Error(e);
+            }
+        }
+        return ttfInfo(data);
+    }
 };

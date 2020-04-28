@@ -1,5 +1,5 @@
 const fs            = require('fs'),
-      nameTable     = require('./tableName')
+      nameTable     = require('./tableName'),
       postTable     = require('./tablePost'),
       os2Table      = require('./tableOS2');
 
@@ -28,9 +28,7 @@ function ttfInfo(data) {
   }
 }
 
-module.exports = function(pathOrData, cb) {
-
-};
+module.exports = function() {};
 
 module.exports = {
     get: function(pathOrData, cb) {
@@ -50,7 +48,7 @@ module.exports = {
     getSync: function(pathOrData) {
         var data;
         if (pathOrData instanceof Buffer) {
-            data = pathOrdata;
+            data = pathOrData;
         } else {
             try {
                 data = fs.readFileSync(pathOrData);

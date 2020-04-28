@@ -1,10 +1,9 @@
-
 const table = require('./table');
 
-const FORMAT_OFFSET             = 0,
-      ITALIC_ANGLE_OFFSET       = FORMAT_OFFSET + 4;
-      UNDERLINE_POSITION_OFFSET = ITALIC_ANGLE_OFFSET + 8,
-      UNDERLINE_THICKNESS_OFFSET = UNDERLINE_POSITION_OFFSET + 2;
+const FORMAT_OFFSET              = 0,
+      ITALIC_ANGLE_OFFSET        = FORMAT_OFFSET + 4,
+      UNDERLINE_POSITION_OFFSET  = ITALIC_ANGLE_OFFSET + 8,
+      UNDERLINE_THICKNESS_OFFSET = UNDERLINE_POSITION_OFFSET + 2,
       IS_FIXED_PITCH_OFFSET      = UNDERLINE_THICKNESS_OFFSET + 2;
 
 var fixed16dot16 = function(fixed) {
@@ -14,7 +13,7 @@ var fixed16dot16 = function(fixed) {
   }
 
   return fixed / 65536;
-}
+};
 
 
 module.exports = function(data) {
@@ -30,6 +29,4 @@ module.exports = function(data) {
     minMemType1       : data.readUInt32BE(o+11),
     maxMemType1       : data.readUInt32BE(o+13)
   };
-}
-
-
+};

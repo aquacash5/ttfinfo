@@ -1,4 +1,3 @@
-
 const TABLE_COUNT_OFFSET = 4,
       TABLE_HEAD_OFFSET = 12,
       TABLE_HEAD_SIZE = 16,
@@ -34,5 +33,5 @@ exports.tableHead = function(data, name) {
       };
     }
   }
-}
+};
 

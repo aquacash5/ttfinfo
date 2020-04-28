@@ -5,9 +5,16 @@ const fs            = require('fs'),
 
 function ttfInfo(data) {
   try {
-    var info = {
+    const names = nameTable(data);
+
+    const info = {
       tables: {
-        name: nameTable(data),
+        name: names,
+        platform: {
+          unicode:   names.unicode,
+          macintosh: names.macintosh,
+          microsoft: names.microsoft
+        },
         post: postTable(data),
         'OS/2': os2Table(data)
       }

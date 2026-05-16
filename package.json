@@ -1,17 +1,17 @@
 {
   "name": "@aquacash5/ttfinfo",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/trevordixon/ttfinfo.git"
+    "url": "https://github.com/aquacash5/ttfinfo.git"
   },
   "keywords": [
     "ttf"
   ],
   "author": {
-    "name": "Trevor Dixon",
-    "email": "trevordixon@gmail.com"
+    "name": "Kyle Bloom",
+    "email": "kylejbloom@gmail.com"
   },
   "license": "MIT",
   "description": "Extracts metadata from a ttf file."

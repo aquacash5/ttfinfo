@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowJs": true, // Allows TypeScript to process JavaScript files
+    "checkJs": true, // Enables type checking in JavaScript files
+    "noEmit": true, // Tells TS not to generate output files; use only for checking
+    "target": "ESNext", // Set the JS version for type support (e.g., ESNext, ES2022)
+    "module": "NodeNext", // Recommended for modern Node.js projects
+    "strict": true // Enables strict type checking for better safety
+  },
+  "include": [
+    "**/*.js"
+  ] // Specify which files to check
+}

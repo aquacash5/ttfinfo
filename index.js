@@ -1,8 +1,14 @@
-const fs            = require('fs'),
-      nameTable     = require('./tableName'),
-      postTable     = require('./tablePost'),
-      os2Table      = require('./tableOS2');
+import { readFile as readFileAsync } from "node:fs/promises";
+import { readFileSync } from "node:fs";
+import { nameTable } from "./tableName";
+import { postTable } from "./tablePost";
+import { os2Table } from "./tableOS2";
 
+/**
+ *
+ * @param {Buffer} data
+ * @returns
+ */
 function ttfInfo(data) {
   try {
     const names = nameTable(data);
@@ -11,51 +17,49 @@ function ttfInfo(data) {
       tables: {
         name: names,
         platform: {
-          unicode:   names.unicode,
+          unicode: names.unicode,
           macintosh: names.macintosh,
-          microsoft: names.microsoft
+          microsoft: names.microsoft,
         },
         post: postTable(data),
-        'OS/2': os2Table(data)
-      }
+        "OS/2": os2Table(data),
+      },
     };
 
+    info.tables.platform.macintosh;
+
     return info;
-  }
-  catch(e) {
+  } catch (e) {
     // console.error(String(e));
-    throw ("Error reading ttf: " + String(e));
+    throw "Error reading ttf: " + String(e);
   }
 }
 
-module.exports = function() {};
+/**
+ *
+ * @param {Buffer | string} pathOrData
+ * @returns
+ */
+export async function get(pathOrData) {
+  if (pathOrData instanceof Buffer) {
+    return ttfInfo(pathOrData);
+  } else {
+    const data = await readFileAsync(pathOrData);
+    return ttfInfo(data);
+  }
+}
 
-module.exports = {
-    get: function(pathOrData, cb) {
-        var getData = (pathOrData instanceof Buffer) ?
-        function(data, cb) { cb(null, data); } : fs.readFile;
-
-      getData(pathOrData, function(err, data) {
-        if (err) return cb(pathOrData + ' not found.');
-        try {
-          var info = ttfInfo(data);
-          cb(null, info);
-        } catch(err) {
-          cb(err);
-        }
-      });
-    },
-    getSync: function(pathOrData) {
-        var data;
-        if (pathOrData instanceof Buffer) {
-            data = pathOrData;
-        } else {
-            try {
-                data = fs.readFileSync(pathOrData);
-            } catch(e) {
-                throw new Error(e);
-            }
-        }
-        return ttfInfo(data);
-    }
-};
+/**
+ *
+ * @param {Buffer | string} pathOrData
+ * @returns
+ */
+export function getSync(pathOrData) {
+  var data;
+  if (pathOrData instanceof Buffer) {
+    return ttfInfo(pathOrData);
+  } else {
+    data = readFileSync(pathOrData);
+    return ttfInfo(data);
+  }
+}

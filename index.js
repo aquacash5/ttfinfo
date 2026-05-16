@@ -63,3 +63,8 @@ export function getSync(pathOrData) {
     return ttfInfo(data);
   }
 }
+
+export default {
+  get,
+  getSync,
+};

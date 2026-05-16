@@ -1,8 +1,8 @@
 import { readFile as readFileAsync } from "node:fs/promises";
 import { readFileSync } from "node:fs";
-import { nameTable } from "./tableName";
-import { postTable } from "./tablePost";
-import { os2Table } from "./tableOS2";
+import { nameTable } from "./tableName.js";
+import { postTable } from "./tablePost.js";
+import { os2Table } from "./tableOS2.js";
 
 /**
  *
@@ -26,7 +26,7 @@ function ttfInfo(data) {
       },
     };
 
-    info.tables.platform.macintosh;
+    info.tables.platform.unicode;
 
     return info;
   } catch (e) {

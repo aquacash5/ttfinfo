@@ -13,6 +13,13 @@
     "name": "Kyle Bloom",
     "email": "kylejbloom@gmail.com"
   },
+  "scripts": {
+    "test": "vitest"
+  },
+  "type": "module",
   "license": "MIT",
-  "description": "Extracts metadata from a ttf file."
+  "description": "Extracts metadata from a ttf file.",
+  "devDependencies": {
+    "vitest": "^4.1.6"
+  }
 }

@@ -1,4 +1,4 @@
-import { offset } from "./table";
+import { offset } from "./table.js";
 
 /** @type {Record<number, "unicode" | "macintosh" | "microsoft" | undefined>} */
 const Platforms = {

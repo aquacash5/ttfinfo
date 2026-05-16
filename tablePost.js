@@ -1,4 +1,4 @@
-import { offset } from "./table";
+import { offset } from "./table.js";
 
 const FORMAT_OFFSET = 0,
   ITALIC_ANGLE_OFFSET = FORMAT_OFFSET + 4,

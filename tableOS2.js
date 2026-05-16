@@ -1,4 +1,4 @@
-import { offset } from "./table";
+import { offset } from "./table.js";
 
 const VERSION_OFFSET = 0,
   WEIGHT_CLASS_OFFSET = 4;

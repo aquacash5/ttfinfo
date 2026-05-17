@@ -42,10 +42,10 @@ const Names = {
 /**
  * @param {Buffer} data
  * @returns {{
- *  base: string[],
- *  unicode: Record<string, string> & Partial<Record<Name, string>>,
- *  macintosh: Record<string, string> & Partial<Record<Name, string>>,
- *  microsoft: Record<string, string> & Partial<Record<Name, string>>
+ *  base: Partial<Record<Name | number, string>>,
+ *  unicode: Partial<Record<Name, string>>,
+ *  macintosh: Partial<Record<Name, string>>,
+ *  microsoft: Partial<Record<Name, string>>
  * }}
  */
 export function nameTable(data) {
@@ -59,16 +59,14 @@ export function nameTable(data) {
 
   /**
    * @type {{
-   *  base: string[],
+   *  base: Partial<Record<Name | number, string>>,
    *  unicode: Partial<Record<Name, string>>,
    *  macintosh: Partial<Record<Name, string>>,
    *  microsoft: Partial<Record<Name, string>>
    * }}
    */
   let info = {
-    base: new Array(
-      Math.max(...Object.keys(Names).map((n) => parseInt(n, 10))),
-    ),
+    base: {},
     unicode: {},
     macintosh: {},
     microsoft: {},
@@ -97,6 +95,7 @@ export function nameTable(data) {
 
     if (!info.base[nameId]) {
       info.base[nameId] = info[platformName][recordName];
+      info.base[recordName] = info[platformName][recordName];
     }
   }
   return info;

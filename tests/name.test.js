@@ -20,7 +20,7 @@ describe("colr_1", () => {
   test("colr name is COLRv1 Static Test Glyphs Regular", async () => {
     const info = await ttfInfo.get(testFont);
 
-    expect(info.tables.name.microsoft.fullName).toBe(
+    expect(info.tables.name.base.fullName).toBe(
       "COLRv1 Static Test Glyphs Regular",
     );
   });
@@ -37,7 +37,7 @@ describe("colr_1_variable", () => {
   test("colr name is COLRv1 Variable Test Glyphs Regular", async () => {
     const info = await ttfInfo.get(testFont);
 
-    expect(info.tables.name.microsoft.fullName).toBe(
+    expect(info.tables.name.base.fullName).toBe(
       "COLRv1 Variable Test Glyphs Regular",
     );
   });
